@@ -1,0 +1,75 @@
+=== Step 1: BAM stats ===
+3245545 + 0 in total (QC-passed reads + QC-failed reads)
+3245545 + 0 primary
+0 + 0 secondary
+0 + 0 supplementary
+203740 + 0 duplicates
+203740 + 0 primary duplicates
+3227627 + 0 mapped (99.45% : N/A)
+3227627 + 0 primary mapped (99.45% : N/A)
+3228205 + 0 paired in sequencing
+1614196 + 0 read1
+1614009 + 0 read2
+3174540 + 0 properly paired (98.34% : N/A)
+3192369 + 0 with itself and mate mapped
+17918 + 0 singletons (0.56% : N/A)
+7987 + 0 with mate mapped to a different chr
+5038 + 0 with mate mapped to a different chr (mapQ>=5)
+=== Step 2: Read depth ===
+
+=== Read Depth Summary (chr20) ===
+Total positions:   58,399,801
+Mean depth:        4.83x
+Median depth:      5.00x
+Min / Max:         0 / 244
+% positions >=10x: 3.4%
+% positions >=20x: 0.0%
+% positions >=30x: 0.0%
+=== Step 3: GATK HaplotypeCaller ===
+Using GATK jar /opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar HaplotypeCaller -R hs37_chr20.fa -I NA12878.chrom20.ILLUMINA.bwa.CEU.low_coverage.20121211.bam -O results/gatk/raw.vcf.gz -L 20 --native-pair-hmm-threads 4 --verbosity ERROR
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.intel.gkl.NativeLibraryLoader in an unnamed module (file:/opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+[April 26, 2026, 12:55:15 PM CDT] org.broadinstitute.hellbender.tools.walkers.haplotypecaller.HaplotypeCaller done. Elapsed time: 4.32 minutes.
+Runtime.totalMemory()=763363328
+GATK done
+Using GATK jar /opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar VariantFiltration -R hs37_chr20.fa -V results/gatk/raw.vcf.gz -O results/gatk/filtered_dp10.vcf.gz --filter-expression DP < 10 --filter-name LowDepth --verbosity ERROR
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.intel.gkl.NativeLibraryLoader in an unnamed module (file:/opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+[April 26, 2026, 12:55:16 PM CDT] org.broadinstitute.hellbender.tools.walkers.filters.VariantFiltration done. Elapsed time: 0.01 minutes.
+Runtime.totalMemory()=197132288
+  GATK DP>=10: 3105 variants
+Using GATK jar /opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar VariantFiltration -R hs37_chr20.fa -V results/gatk/raw.vcf.gz -O results/gatk/filtered_dp20.vcf.gz --filter-expression DP < 20 --filter-name LowDepth --verbosity ERROR
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.intel.gkl.NativeLibraryLoader in an unnamed module (file:/opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+[April 26, 2026, 12:55:18 PM CDT] org.broadinstitute.hellbender.tools.walkers.filters.VariantFiltration done. Elapsed time: 0.01 minutes.
+Runtime.totalMemory()=199229440
+  GATK DP>=20: 16 variants
+Using GATK jar /opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar
+Running:
+    java -Dsamjdk.use_async_io_read_samtools=false -Dsamjdk.use_async_io_write_samtools=true -Dsamjdk.use_async_io_write_tribble=false -Dsamjdk.compression_level=2 -jar /opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar VariantFiltration -R hs37_chr20.fa -V results/gatk/raw.vcf.gz -O results/gatk/filtered_dp30.vcf.gz --filter-expression DP < 30 --filter-name LowDepth --verbosity ERROR
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.intel.gkl.NativeLibraryLoader in an unnamed module (file:/opt/anaconda3/envs/vc/share/gatk4-4.6.2.0-1/gatk-package-4.6.2.0-local.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+[April 26, 2026, 12:55:20 PM CDT] org.broadinstitute.hellbender.tools.walkers.filters.VariantFiltration done. Elapsed time: 0.01 minutes.
+Runtime.totalMemory()=188743680
+  GATK DP>=30: 3 variants
+=== Step 4: FreeBayes ===
+FreeBayes done
+Error: ambiguous filtering expression, both INFO/DP and FORMAT/DP are defined in the VCF header.
