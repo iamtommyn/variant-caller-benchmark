@@ -1,0 +1,16 @@
+# Reference genome files (large, publicly downloadable)
+*.fa
+*.fai
+*.dict
+
+# Alignment files (large, publicly downloadable)
+*.bam
+*.bai
+
+# Large raw intermediate outputs (regenerable)
+depth.txt
+*.vcf
+
+# OS/editor cruft
+.DS_Store
+*.swp
